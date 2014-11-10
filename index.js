@@ -118,8 +118,8 @@
     if (running) return;
     running = true;
     if (false === options.dispatch) dispatch = false;
-    if (false !== options.popstate) window.addEventListener('popstate', onpopstate, false);
-    if (false !== options.click) window.addEventListener('click', onclick, false);
+    if (false !== options.popstate) window.addEventListener ? window.addEventListener('popstate', onpopstate, false) : window.attachEvent('popstate', onpopstate);
+    if (false !== options.click) window.addEventListener ? window.addEventListener('click', onclick, false) : window.attachEvent('click', onclick);
     if (true === options.hashbang) hashbang = true;
     if (!dispatch) return;
     var url = (hashbang && location.hash.indexOf('#!') === 0)
